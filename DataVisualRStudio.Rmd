@@ -1,0 +1,267 @@
+---
+output: pdf_document
+date: "2024-01-14"
+---
+
+# ToDo 1: 
+Compute the difference between 2014 and the
+year you started at this university and divide
+this by the difference between 2014 and the year
+you were born. Multiply this with 100 to get
+the percentage of your life you have spent at
+this university. Use brackets if you need them.
+```{r}
+# Define the relevant years
+entrence_year_college <- 2022  
+my_birth_year <- 1991
+
+# Calculate 
+percent_my_life_at_college <- ((entrence_year_college - 2014) / (2014 - my_birth_year)) * 100
+
+# Print the result
+cat("The percentage of my life that I spent at College is:", percent_my_life_at_college, "%\n")
+
+```
+
+# ToDo 2: 
+Repeat the previous ToDo, but with several
+steps in between. You can give the variables
+any name you want, but the name has to start
+with a letter.
+```{r}
+# year variables
+start_year_college <- 2022  
+my_birth_year <- 1991
+
+# Step 1: Calculating the difference between 2014 and the year I started at college
+difference_start_college <- start_year_college -2014
+
+# Step 2: Calculate the difference between 2014 and my birth year
+difference_birth_year <- 2014 - my_birth_year
+
+# Step 3: Divide the difference_start_college by the difference_birth_year
+ratio_diff <- difference_start_college / difference_birth_year
+
+# Step 4: Multiply the result by 100 in order to get the percentage
+percentage_at_college <- ratio_diff * 100
+
+# Print the result
+cat("The percentage of my life that I spent at College is:", percentage_at_college, "%\n")
+
+```
+What is cat()? In R, cat is a function that stands for "concatenate" and is short for "concatenate and print." The primary purpose of the cat function is to concatenate its arguments and print the result. It is often used for simple output and printing.
+
+
+# ToDo 3: 
+Compute the sum of 4, 5, 8 and 11 by first combining them into a vector and then using the
+function sum.
+```{r}
+# concate the numbers to create a vector
+vector_concat_num <- c(4, 5, 8, 11)
+
+# calculating the sum of them 
+sum_vector <- sum(vector_concat_num)
+
+# print
+cat("The sum of 4, 5, 8, and 11 is:", sum_vector, "\n")
+```
+
+What is c()? In R, the c() function is used to combine or concatenate elements into a vector. The letter "c" stands for "combine" or "concatenate." The vector has only one dimension, either in rows or columns.
+
+# ToDo 4: 
+Plot 100 normal random numbers.
+```{r}
+# Generate 100 normal random numbers
+x <- rnorm(100, mean = 0, sd = 1)
+
+# Plot the random numbers
+plot(x, main = "Scatter Plot of 100 Normal Random Numbers", xlab = "Index", ylab = "Values")
+
+```
+
+# ToDo 5: 
+Find help for the sqrt function
+```{r}
+# Using help() function
+help(sqrt)
+```
+
+# ToDo 6: 
+Make a file called firstscript.R containing Rcode that generates 100 random numbers and
+plots them, and run this script several times.
+```{r}
+source(".../firstscript.R")
+
+```
+
+# ToDo 7: 
+Put the numbers 31 to 60 in a vector named
+P and in a matrix with 6 rows and 5 columns
+named Q. Tip: use the function seq. Look at
+the different ways scalars, vectors and matrices
+are denoted in the workspace window.
+```{r}
+p <- seq(from=31, to=60)
+q <- matrix(data=c(p),nrow=6, ncol=5)
+q
+```
+
+# ToDo 8: 
+Make a script file which constructs three random normal vectors of length 100. Call these
+vectors x1, x2 and x3. Make a data frame called
+t with three columns (called a, b and c) containing respectively x1, x1+x2 and x1+x2+x3.
+Call the following functions for this data frame:
+plot(t) and sd(t). Can you understand the
+results? Rerun this script a few times.
+```{r}
+source(".../secondscript.R")
+
+```
+
+
+# ToDo 9: 
+Add these lines to the script file of the previous section. Try to find out, either by experimenting or by using the help, what the meaning is of rgb, the last argument of rgb, lwd, pch, cex.
+```{r}
+source(".../secondscript.R")
+```
+
+Explanation of the parameters used:
+
+* rgb(1, 0, 0, 0.3): Specifies a color using the Red-Green-Blue (RGB) color model. The parameters are the intensity of Red, Green, and Blue, respectively, and the last argument (0.3) represents the level of transparency (alpha channel). So, in this case, it's a somewhat transparent red color.
+
+* lwd: Stands for line width. It determines the width of the lines in the plot.
+
+* pch: Stands for plot character. It specifies the type of symbol or point to be used in the plot.
+
+* cex: Stands for character expansion. It determines the size of the plot characters or symbols. Larger values make the symbols bigger.
+
+
+# ToDo 10: 
+Make a file called tst1.txt in Notepad from
+the example in Figure 4 and store it in your
+working directory. Write a script to read it, to
+multiply the column called g by 5 and to store
+it as tst2.txt.
+```{r}
+read_tst1 <- read.table(file="tst1.txt", header = TRUE)
+read_tst1
+
+# Multiply the g column by 5
+read_tst1$g <- read_tst1$g * 5
+
+# Store the modified data in tst2.txt
+write.table(read_tst1, file = "tst2.txt", sep = "\t", row.names = FALSE)
+
+read_tst2 <- read.table(file="tst2.txt", header = TRUE)
+read_tst2
+```
+
+
+# ToDo 11: 
+Compute the mean of the square root of a vector of 100 random numbers. What happens?
+```{r}
+# Set a seed for reproducibility
+set.seed(123)
+
+# Generate a vector of 100 random numbers
+rand_num_vec <- rnorm(100)
+
+# Compute the mean of the square root of the vector
+res <- mean(sqrt(rand_num_vec))
+
+# Print the result
+cat("Mean of the square root of the vector:", res, "\n")
+
+```
+I got an Error that says: Warning: NaNs producedMean of the square root of the vector: NaN 
+
+# ToDo 12: 
+Make a graph with on the x-axis: today, Sinterklaas 2014 and your next birthday and on
+the y-axis the number of presents you expect on
+each of these days. Tip: make two vectors first.
+```{r}
+date1=strptime( c("20240114", "20141205", "20240805"), format="%Y%m%d")
+
+presents <- c(4,8,2)
+
+# Plot the graph
+plot(date1, presents, type = "b", col = "blue", pch = 19, xlab = "Date", ylab = "Number of Presents")
+
+title(main = "Number of Presents in each mentioned days.")
+
+plot
+
+
+```
+
+# ToDo 13: 
+Make a vector from 1 to 100. Make a for-loop
+which runs through the whole vector. Multiply
+the elements which are smaller than 5 and larger
+than 90 with 10 and the other elements with 0.1.
+```{r}
+# Create a vector from 1 to 100
+vector_1_to_100 <- seq(from=1, to=100)
+
+# Create an empty vector to remember the results
+final <- c()
+
+# for-loop
+for (i in 1:length(vector_1_to_100)) {
+  if (vector_1_to_100[i] < 5 | vector_1_to_100[i] > 90) {
+    final[i] <- vector_1_to_100[i] * 10
+  } else {
+    final[i] <- vector_1_to_100[i] * 0.1
+  }
+}
+
+# print the result
+cat("Original Vector:\n")
+print(vector_1_to_100)
+
+cat("\nfinal Vector:\n")
+print(final)
+
+```
+
+
+# ToDo 14: 
+Write a function for the previous ToDo, so
+that you can feed it any vector you like
+(as argument). Use a for-loop in the function to do the computation with each element. Use the standard R function length in the specification of the counter.
+```{r}
+# function
+my_vector <- function(input_vector) {
+  # empty vector to remember the results
+  final <- c(input_vector)
+  
+  # for-loop
+  for (i in 1:length(input_vector)) {
+    if (input_vector[i] < 5 | input_vector[i] > 90) {
+      final[i] <- input_vector[i] * 10
+    } else {
+      final[i] <- input_vector[i] * 0.1
+    }
+  }
+  
+  # get the final results
+  return(final)
+}
+
+# Create a vector from 1 to 100
+vector_1_to_100 <- seq(from = 1, to = 100)
+
+# use my functiosn
+modified_vector <- my_vector(vector_1_to_100)
+
+# Display the original and modified vectors
+cat("Original Vector:\n")
+print(vector_1_to_100)
+
+cat("\nfinal Vector:\n")
+print(modified_vector)
+
+```
+
+
+
